@@ -1,0 +1,14 @@
+syntax = "proto3";//版本号
+package pb;//包名
+option go_package = "/internal/service;service";
+
+//protoc -I internal/service/pb internal/service/pb/*.proto --go_out=. --go-grpc_out=require_unimplemented_servers=false:.
+//protoc-go-inject-tag -input="internal/service/*.pb.go"
+message UserModel {//消息，对应于Go的结构体
+  // @inject_tag: json:"user_id"
+  uint32 UserID = 1;//1:标号，唯一 即可（相当于数据库中的Id，不一定要从1 ，2的顺序依次排列
+  // @inject_tag: json:"user_name"
+  string UserName = 2;
+  // @inject_tag: json:"nick_name"
+  string NickName = 3;
+}
