@@ -4,12 +4,13 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"google.golang.org/grpc/resolver"
 	"strings"
+
+	"google.golang.org/grpc/resolver"
 )
 
 type Server struct {
-	Name    string `json:"name"`    //名字
+	Name    string `json:"name"`
 	Addr    string `json:"addr"`    // 地址
 	Version string `json:"version"` // 版本
 	Weight  int64  `json:"weight"`  // 权重
@@ -27,7 +28,6 @@ func BuildRegisterPath(server Server) string {
 	return fmt.Sprintf("%s%s", BuildPrefix(server), server.Addr)
 }
 
-// ParseValue 将value值反序列化到一个server实例当中
 func ParseValue(value []byte) (Server, error) {
 	server := Server{}
 	if err := json.Unmarshal(value, &server); err != nil {
@@ -37,20 +37,19 @@ func ParseValue(value []byte) (Server, error) {
 	return server, nil
 }
 
-// SplitPath 切割路径
 func SplitPath(path string) (Server, error) {
 	server := Server{}
-	paths := strings.Split(path, "/")
-	if len(paths) == 0 {
+	strs := strings.Split(path, "/")
+	if len(strs) == 0 {
 		return server, errors.New("invalid path")
 	}
 
-	server.Addr = paths[len(paths)-1]
+	server.Addr = strs[len(strs)-1]
 
 	return server, nil
 }
 
-// Exist 查看路径是否存在
+// Exist helper function
 func Exist(l []resolver.Address, addr resolver.Address) bool {
 	for i := range l {
 		if l[i].Addr == addr.Addr {

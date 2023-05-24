@@ -22,7 +22,7 @@ type Resolver struct {
 	closeCh      chan struct{}
 	watchCh      clientv3.WatchChan
 	cli          *clientv3.Client
-	keyPrefix    string
+	keyPrifix    string
 	srvAddrsList []resolver.Address
 
 	cc     resolver.ClientConn
@@ -48,7 +48,7 @@ func (r *Resolver) Scheme() string {
 func (r *Resolver) Build(target resolver.Target, cc resolver.ClientConn, opts resolver.BuildOptions) (resolver.Resolver, error) {
 	r.cc = cc
 
-	r.keyPrefix = BuildPrefix(Server{Name: target.Endpoint(), Version: target.Authority})
+	r.keyPrifix = BuildPrefix(Server{Name: target.Endpoint(), Version: target.URL.Host})
 	if _, err := r.start(); err != nil {
 		return nil, err
 	}
@@ -89,7 +89,7 @@ func (r *Resolver) start() (chan<- struct{}, error) {
 // watch update events
 func (r *Resolver) watch() {
 	ticker := time.NewTicker(time.Minute)
-	r.watchCh = r.cli.Watch(context.Background(), r.keyPrefix, clientv3.WithPrefix())
+	r.watchCh = r.cli.Watch(context.Background(), r.keyPrifix, clientv3.WithPrefix())
 
 	for {
 		select {
@@ -142,7 +142,7 @@ func (r *Resolver) update(events []*clientv3.Event) {
 func (r *Resolver) sync() error {
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
-	res, err := r.cli.Get(ctx, r.keyPrefix, clientv3.WithPrefix())
+	res, err := r.cli.Get(ctx, r.keyPrifix, clientv3.WithPrefix())
 	if err != nil {
 		return err
 	}

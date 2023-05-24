@@ -33,7 +33,27 @@ func (*Task) CreateTask(req *service.TaskRequest) (err error) {
 }
 
 func (*Task) ShowTask(req *service.TaskRequest) (taskList []Task, err error) {
-	err = DB.Model(&Task{}).Where("user_id=?", req.UserID).Find(&taskList).Error
+	if req.PageSize == 0 {
+		req.PageSize = 15
+	}
+	err = DB.Model(&Task{}).Where("user_id=?", req.UserID).Limit(int(req.PageSize)).Offset(int((req.PageNum - 1) * req.PageSize)).Find(&taskList).Error
+
+	if err != nil {
+		return nil, err
+	}
+
+	return taskList, nil
+}
+
+func (*Task) SearchTask(req *service.TaskRequest) (taskList []Task, err error) {
+	if req.PageSize == 0 {
+		req.PageSize = 15
+	}
+
+	err = DB.Model(&Task{}).Where("user_id=?", req.UserID).
+		Where("title LIKE ? OR content LIKE ?", "%"+req.Info+"%", "%"+req.Info+"%").
+		Limit(int(req.PageSize)).Offset(int((req.PageNum - 1) * req.PageSize)).
+		Find(&taskList).Error
 
 	if err != nil {
 		return nil, err
@@ -53,8 +73,29 @@ func (*Task) UpdateTask(req *service.TaskRequest) (err error) {
 
 	return
 }
+
+func (*Task) UpdateAllTask(req *service.TaskRequest) (err error) {
+	var tasks []Task
+	err = DB.Model(&Task{}).Where("user_id=?", req.UserID).Find(&tasks).Error
+	if err != nil {
+		return err
+	}
+	for _, task := range tasks {
+		task.Status = int(req.Status)
+		DB.Save(&task)
+	}
+	return nil
+}
 func (*Task) DeleteTask(req *service.TaskRequest) (err error) {
 	return DB.Model(&Task{}).Where("task_id = ? AND user_id = ?", req.TaskID, req.UserID).Delete(Task{}).Error
+}
+func (*Task) DeleteAllTask(req *service.TaskRequest) (err error) {
+	if req.Status == -1 {
+		err = DB.Model(&Task{}).Where("user_id = ?", req.UserID).Delete([]Task{}).Error
+	} else {
+		err = DB.Model(&Task{}).Where("user_id = ?", req.UserID).Where("status=?", req.Status).Delete([]Task{}).Error
+	}
+	return
 }
 
 // BuildTask 视图返回
@@ -70,6 +111,7 @@ func BuildTask(item Task) *service.TaskModel {
 	}
 	return &taskModel
 }
+
 func BuildTasks(items []Task) (taskList []*service.TaskModel) {
 	for _, item := range items {
 		task := BuildTask(item)

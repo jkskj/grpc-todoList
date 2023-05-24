@@ -1,673 +1,983 @@
 {
-  "info": {
-    "_postman_id": "e22e800c-7321-4511-9d51-b846ebf6141d",
-    "name": "gRPC-todoList",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "10242828"
-  },
-  "item": [
-    {
-      "name": "用户模块",
-      "item": [
-        {
-          "name": "用户注册",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user_name",
-                  "value": "FanOne1112",
-                  "type": "text"
-                },
-                {
-                  "key": "nick_name",
-                  "value": "CocaineCong",
-                  "type": "text"
-                },
-                {
-                  "key": "password",
-                  "value": "12345678",
-                  "type": "text"
-                },
-                {
-                  "key": "password_confirm",
-                  "value": "12345678",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": {
-              "raw": "{{url}}/user/register",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "user",
-                "register"
-              ]
-            }
-          },
-          "response": [
-            {
-              "name": "用户注册",
-              "originalRequest": {
-                "method": "POST",
-                "header": [],
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "key": "user_name",
-                      "value": "FanOne1112",
-                      "type": "text"
-                    },
-                    {
-                      "key": "nick_name",
-                      "value": "CocaineCong",
-                      "type": "text"
-                    },
-                    {
-                      "key": "password",
-                      "value": "12345678",
-                      "type": "text"
-                    },
-                    {
-                      "key": "password_confirm",
-                      "value": "12345678",
-                      "type": "text"
-                    }
-                  ]
-                },
-                "url": {
-                  "raw": "{{url}}/user/register",
-                  "host": [
-                    "{{url}}"
-                  ],
-                  "path": [
-                    "user",
-                    "register"
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json; charset=utf-8"
-                },
-                {
-                  "key": "Date",
-                  "value": "Sat, 20 May 2023 04:59:39 GMT"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "77"
-                }
-              ],
-              "cookie": [],
-              "body": "{\n    \"status\": 200,\n    \"data\": {\n        \"code\": 200,\n        \"msg\": \"\",\n        \"data\": \"ok\"\n    },\n    \"msg\": \"ok\",\n    \"error\": \"\"\n}"
-            }
-          ]
-        },
-        {
-          "name": "用户登录",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user_name",
-                  "value": "FanOne",
-                  "type": "text"
-                },
-                {
-                  "key": "password",
-                  "value": "12345678",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": {
-              "raw": "{{url}}/user/login",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "user",
-                "login"
-              ]
-            }
-          },
-          "response": [
-            {
-              "name": "用户登录",
-              "originalRequest": {
-                "method": "POST",
-                "header": [],
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "key": "user_name",
-                      "value": "FanOne",
-                      "type": "text"
-                    },
-                    {
-                      "key": "password",
-                      "value": "12345678",
-                      "type": "text"
-                    }
-                  ]
-                },
-                "url": {
-                  "raw": "{{url}}/user/login",
-                  "host": [
-                    "{{url}}"
-                  ],
-                  "path": [
-                    "user",
-                    "login"
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json; charset=utf-8"
-                },
-                {
-                  "key": "Date",
-                  "value": "Sat, 20 May 2023 05:00:13 GMT"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "276"
-                }
-              ],
-              "cookie": [],
-              "body": "{\n    \"status\": 200,\n    \"data\": {\n        \"user\": {\n            \"user_id\": 1,\n            \"nick_name\": \"FanOne\",\n            \"user_name\": \"FanOne\"\n        },\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2ODQ2NDUyMTMsImlzcyI6IjM4Mzg0LVNlYXJjaEVuZ2luZSJ9.btiZId5AjNVpDZ47liZxCjlBrLDuAxmYNAxZNFoc0kI\"\n    },\n    \"msg\": \"ok\",\n    \"error\": \"\"\n}"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "任务模块",
-      "item": [
-        {
-          "name": "创建备忘录",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "{{token}}",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "title",
-                  "value": "一键三连加关注！！！",
-                  "type": "text"
-                },
-                {
-                  "key": "content",
-                  "value": "我可太喜欢up了！！！！",
-                  "type": "text"
-                },
-                {
-                  "key": "status",
-                  "value": "0",
-                  "type": "text"
-                },
-                {
-                  "key": "start_time",
-                  "value": "0",
-                  "type": "text"
-                },
-                {
-                  "key": "end_time",
-                  "value": "0",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": {
-              "raw": "{{url}}/task",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "task"
-              ]
-            }
-          },
-          "response": [
-            {
-              "name": "创建备忘录",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "{{token}}",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "key": "title",
-                      "value": "一键三连加关注！！！",
-                      "type": "text"
-                    },
-                    {
-                      "key": "content",
-                      "value": "我可太喜欢up了！！！！",
-                      "type": "text"
-                    },
-                    {
-                      "key": "status",
-                      "value": "0",
-                      "type": "text"
-                    },
-                    {
-                      "key": "start_time",
-                      "value": "0",
-                      "type": "text"
-                    },
-                    {
-                      "key": "end_time",
-                      "value": "0",
-                      "type": "text"
-                    }
-                  ]
-                },
-                "url": {
-                  "raw": "{{url}}/task",
-                  "host": [
-                    "{{url}}"
-                  ],
-                  "path": [
-                    "task"
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json; charset=utf-8"
-                },
-                {
-                  "key": "Date",
-                  "value": "Sat, 20 May 2023 05:30:38 GMT"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "77"
-                }
-              ],
-              "cookie": [],
-              "body": "{\n    \"status\": 200,\n    \"data\": {\n        \"code\": 200,\n        \"msg\": \"ok\",\n        \"data\": \"\"\n    },\n    \"msg\": \"ok\",\n    \"error\": \"\"\n}"
-            }
-          ]
-        },
-        {
-          "name": "获取备忘录列表",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "{{token}}",
-                "type": "text"
-              }
-            ],
-            "url": {
-              "raw": "{{url}}/task",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "task"
-              ]
-            }
-          },
-          "response": [
-            {
-              "name": "获取备忘录列表",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "{{token}}",
-                    "type": "text"
-                  }
-                ],
-                "url": {
-                  "raw": "{{url}}/task",
-                  "host": [
-                    "{{url}}"
-                  ],
-                  "path": [
-                    "task"
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json; charset=utf-8"
-                },
-                {
-                  "key": "Date",
-                  "value": "Sat, 20 May 2023 05:31:14 GMT"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "222"
-                }
-              ],
-              "cookie": [],
-              "body": "{\n    \"status\": 200,\n    \"data\": {\n        \"task_model\": [\n            {\n                \"task_id\": 1,\n                \"user_id\": 1,\n                \"status\": 0,\n                \"title\": \"一键三连加关注！！！\",\n                \"content\": \"我可太喜欢up了！！！！\",\n                \"start_time\": 0,\n                \"end_time\": 0\n            }\n        ],\n        \"code\": 200\n    },\n    \"msg\": \"ok\",\n    \"error\": \"\"\n}"
-            }
-          ]
-        },
-        {
-          "name": "修改备忘录",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "{{token}}",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "task_id",
-                  "value": "1",
-                  "type": "text"
-                },
-                {
-                  "key": "title",
-                  "value": "我太喜欢点赞了！",
-                  "type": "text"
-                },
-                {
-                  "key": "content",
-                  "value": "拒绝白嫖，从我做起111",
-                  "type": "text"
-                },
-                {
-                  "key": "status",
-                  "value": "1",
-                  "type": "text"
-                },
-                {
-                  "key": "start_time",
-                  "value": "1",
-                  "type": "text"
-                },
-                {
-                  "key": "end_time",
-                  "value": "1",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": {
-              "raw": "{{url}}/task",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "task"
-              ]
-            }
-          },
-          "response": [
-            {
-              "name": "修改备忘录",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "{{token}}",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "key": "task_id",
-                      "value": "1",
-                      "type": "text"
-                    },
-                    {
-                      "key": "title",
-                      "value": "我太喜欢点赞了！",
-                      "type": "text"
-                    },
-                    {
-                      "key": "content",
-                      "value": "拒绝白嫖，从我做起111",
-                      "type": "text"
-                    },
-                    {
-                      "key": "status",
-                      "value": "1",
-                      "type": "text"
-                    },
-                    {
-                      "key": "start_time",
-                      "value": "1",
-                      "type": "text"
-                    },
-                    {
-                      "key": "end_time",
-                      "value": "1",
-                      "type": "text"
-                    }
-                  ]
-                },
-                "url": {
-                  "raw": "{{url}}/task",
-                  "host": [
-                    "{{url}}"
-                  ],
-                  "path": [
-                    "task"
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json; charset=utf-8"
-                },
-                {
-                  "key": "Date",
-                  "value": "Sat, 20 May 2023 05:40:35 GMT"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "77"
-                }
-              ],
-              "cookie": [],
-              "body": "{\n    \"status\": 200,\n    \"data\": {\n        \"code\": 200,\n        \"msg\": \"ok\",\n        \"data\": \"\"\n    },\n    \"msg\": \"ok\",\n    \"error\": \"\"\n}"
-            }
-          ]
-        },
-        {
-          "name": "删除备忘录",
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "{{token}}",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "task_id",
-                  "value": "2",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": {
-              "raw": "{{url}}/task",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "task"
-              ]
-            }
-          },
-          "response": [
-            {
-              "name": "删除备忘录",
-              "originalRequest": {
-                "method": "DELETE",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "{{token}}",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "key": "task_id",
-                      "value": "2",
-                      "type": "text"
-                    }
-                  ]
-                },
-                "url": {
-                  "raw": "{{url}}/task",
-                  "host": [
-                    "{{url}}"
-                  ],
-                  "path": [
-                    "task"
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json; charset=utf-8"
-                },
-                {
-                  "key": "Date",
-                  "value": "Sat, 20 May 2023 07:01:26 GMT"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "77"
-                }
-              ],
-              "cookie": [],
-              "body": "{\n    \"status\": 200,\n    \"data\": {\n        \"code\": 200,\n        \"msg\": \"ok\",\n        \"data\": \"\"\n    },\n    \"msg\": \"ok\",\n    \"error\": \"\"\n}"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "测试连接",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{url}}/ping",
-          "host": [
-            "{{url}}"
-          ],
-          "path": [
-            "ping"
-          ]
-        }
-      },
-      "response": [
-        {
-          "name": "测试连接",
-          "originalRequest": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{url}}/ping",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "ping"
-              ]
-            }
-          },
-          "status": "OK",
-          "code": 200,
-          "_postman_previewlanguage": "json",
-          "header": [
-            {
-              "key": "Content-Type",
-              "value": "application/json; charset=utf-8"
-            },
-            {
-              "key": "Date",
-              "value": "Sat, 11 Jun 2022 15:46:00 GMT"
-            },
-            {
-              "key": "Content-Length",
-              "value": "9"
-            }
-          ],
-          "cookie": [],
-          "body": "\"success\""
-        }
-      ]
-    }
-  ]
+	"info": {
+		"_postman_id": "b1dea8c1-b3a8-4a39-8113-b2368b280de9",
+		"name": "gRPC-todoList",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26523272"
+	},
+	"item": [
+		{
+			"name": "用户模块",
+			"item": [
+				{
+					"name": "用户注册",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_name",
+									"value": "jkskj",
+									"type": "text"
+								},
+								{
+									"key": "nick_name",
+									"value": "jkskj",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "password_confirm",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/user/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "用户注册",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_name",
+											"value": "FanOne1112",
+											"type": "text"
+										},
+										{
+											"key": "nick_name",
+											"value": "CocaineCong",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "password_confirm",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/user/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 May 2023 04:59:39 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"data\": {\n        \"code\": 200,\n        \"msg\": \"\",\n        \"data\": \"ok\"\n    },\n    \"msg\": \"ok\",\n    \"error\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "用户登录",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_name",
+									"value": "jkskj",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/user/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "用户登录",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_name",
+											"value": "FanOne",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/user/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 May 2023 05:00:13 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "276"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"data\": {\n        \"user\": {\n            \"user_id\": 1,\n            \"nick_name\": \"FanOne\",\n            \"user_name\": \"FanOne\"\n        },\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2ODQ2NDUyMTMsImlzcyI6IjM4Mzg0LVNlYXJjaEVuZ2luZSJ9.btiZId5AjNVpDZ47liZxCjlBrLDuAxmYNAxZNFoc0kI\"\n    },\n    \"msg\": \"ok\",\n    \"error\": \"\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "任务模块",
+			"item": [
+				{
+					"name": "创建备忘录",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "我可太喜欢写代码了！！！！",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "start_time",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "end_time",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/task",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "创建备忘录",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "我可太喜欢写代码了！！！！",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "0",
+											"type": "text"
+										},
+										{
+											"key": "start_time",
+											"value": "0",
+											"type": "text"
+										},
+										{
+											"key": "end_time",
+											"value": "0",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/task",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"task"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 24 May 2023 04:22:55 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Status\": 200,\n    \"Data\": {\n        \"code\": 200,\n        \"msg\": \"ok\",\n        \"data\": \"\"\n    },\n    \"Msg\": \"ok\",\n    \"Error\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "获取备忘录列表",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/task",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "获取备忘录列表",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/task",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"task"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 24 May 2023 04:22:58 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "203"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Status\": 200,\n    \"Data\": {\n        \"task_model\": [\n            {\n                \"task_id\": 3,\n                \"user_id\": 2,\n                \"status\": 0,\n                \"title\": \"test\",\n                \"content\": \"我可太喜欢写代码了！！！！\",\n                \"start_time\": 0,\n                \"end_time\": 0\n            }\n        ],\n        \"code\": 200\n    },\n    \"Msg\": \"ok\",\n    \"Error\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "修改备忘录",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "task_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "我太喜欢写代码了！",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "每天写，每天爽",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "start_time",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "end_time",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/task",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "修改备忘录",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "task_id",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "我太喜欢写代码了！",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "每天写，每天爽",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "start_time",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "end_time",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/task",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"task"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 24 May 2023 04:24:01 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Status\": 200,\n    \"Data\": {\n        \"code\": 200,\n        \"msg\": \"ok\",\n        \"data\": \"\"\n    },\n    \"Msg\": \"ok\",\n    \"Error\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "删除备忘录",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "task_id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/task",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "删除备忘录",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "task_id",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/task",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"task"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 24 May 2023 04:24:29 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Status\": 200,\n    \"Data\": {\n        \"code\": 200,\n        \"msg\": \"ok\",\n        \"data\": \"\"\n    },\n    \"Msg\": \"ok\",\n    \"Error\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "搜索备忘录",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "info",
+									"value": "代码",
+									"type": "text"
+								},
+								{
+									"key": "page_size",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "page_num",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/task/search",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"task",
+								"search"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "搜索备忘录",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "info",
+											"value": "代码",
+											"type": "text"
+										},
+										{
+											"key": "page_size",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "page_num",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/task/search",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"task",
+										"search"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 24 May 2023 04:22:28 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "208"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Status\": 200,\n    \"Data\": {\n        \"task_model\": [\n            {\n                \"task_id\": 1,\n                \"user_id\": 2,\n                \"status\": 0,\n                \"title\": \"我太喜欢写代码了！\",\n                \"content\": \"每天写，每天爽\",\n                \"start_time\": 1,\n                \"end_time\": 1\n            }\n        ],\n        \"code\": 200\n    },\n    \"Msg\": \"ok\",\n    \"Error\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "删除 所有已经完成/所有待办/所有 备忘录",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/tasks",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "删除 所有已经完成/所有待办/所有 备忘录",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "status",
+											"value": "0",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/tasks",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"tasks"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 24 May 2023 04:22:46 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Status\": 200,\n    \"Data\": {\n        \"code\": 200,\n        \"msg\": \"ok\",\n        \"data\": \"\"\n    },\n    \"Msg\": \"ok\",\n    \"Error\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "修改所有备忘录",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/tasks",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "修改所有备忘录",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "status",
+											"value": "0",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/tasks",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"tasks"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 24 May 2023 04:25:42 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Status\": 200,\n    \"Data\": {\n        \"code\": 200,\n        \"msg\": \"ok\",\n        \"data\": \"\"\n    },\n    \"Msg\": \"ok\",\n    \"Error\": \"\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "测试连接",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/ping",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "测试连接",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/ping",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"ping"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 11 Jun 2022 15:46:00 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "9"
+						}
+					],
+					"cookie": [],
+					"body": "\"success\""
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:3000/api/v1"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2ODQ5ODg0NDgsImlzcyI6Imprc2tqIn0.J-7O6z9816BRpeUIVDIJyBWGHmsOoO8lqD62637jpDg"
+		}
+	]
 }

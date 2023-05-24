@@ -28,9 +28,12 @@ func NewRouter(service ...interface{}) *gin.Engine {
 		{
 			// 任务模块
 			authed.GET("task", handler.GetTaskList)
+			authed.GET("task/search", handler.SearchTask)
 			authed.POST("task", handler.CreateTask)
 			authed.PUT("task", handler.UpdateTask)
+			authed.PUT("tasks", handler.UpdateAllTask)
 			authed.DELETE("task", handler.DeleteTask)
+			authed.DELETE("tasks", handler.DeleteAllTask)
 		}
 	}
 	return ginRouter

@@ -20,6 +20,8 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// protoc -I internal/service/pb internal/service/pb/*.proto --go_out=. --go-grpc_out=require_unimplemented_servers=false:.
+// protoc-go-inject-tag -input="internal/service/*.pb.go"
 type TaskModel struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

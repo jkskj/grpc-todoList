@@ -22,7 +22,7 @@ func main() {
 	config.InitConfig()
 	// etcd 地址
 	etcdAddress := []string{viper.GetString("etcd.address")}
-	// 服务注册
+	//注册etcd解析器
 	etcdRegister := discovery.NewResolver(etcdAddress, logrus.New())
 	resolver.Register(etcdRegister)
 	defer etcdRegister.Close()
