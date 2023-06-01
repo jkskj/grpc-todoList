@@ -1,0 +1,44 @@
+syntax="proto3";
+option go_package = "idl/pb/user/";
+
+message UserResponse {//消息，对应于Go的结构体
+  // @inject_tag: json:"user_id"
+  int64 UserID = 1;//1:标号，唯一 即可（相当于数据库中的Id，不一定要从1 ，2的顺序依次排列
+  // @inject_tag: json:"user_name"
+  string UserName = 2;
+  // @inject_tag: json:"nick_name"
+  string NickName = 3;
+}
+
+message UserRequest{
+  // @inject_tag: json:"nick_name" form:"nick_name" uri:"nick_name"
+  string NickName = 1;
+  // @inject_tag: json:"user_name" form:"user_name" uri:"user_name"
+  string UserName = 2;
+  // @inject_tag: json:"password" form:"password" uri:"password"
+  string Password = 3;
+  // @inject_tag: json:"password_confirm" form:"password_confirm" uri:"password_confirm"
+  string PasswordConfirm = 4;
+}
+
+message UserDetailResponse{
+  // @inject_tag: json:"user_response" form:"user_response" uri:"user_response"
+  UserResponse UserDetail=1;
+  // @inject_tag: json:"code" form:"code"" uri:"code""
+  int64 Code=2;
+}
+
+message UserCommonResponse{
+  // @inject_tag: json:"code" form:"code"" uri:"code""
+  int64 Code=1;
+  // @inject_tag: json:"msg" form:"msg"" uri:"msg""
+  string Msg=2;
+  // @inject_tag: json:"data" form:"data"" uri:"data""
+  string Data=3;
+}
+
+service UserService{
+  rpc UserLogin(UserRequest) returns(UserDetailResponse);
+  rpc UserRegister(UserRequest) returns(UserDetailResponse);
+  rpc UserLogout(UserRequest) returns(UserDetailResponse);
+}

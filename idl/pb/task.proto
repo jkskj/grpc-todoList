@@ -1,0 +1,72 @@
+syntax="proto3";
+option go_package = "idl/pb/task/";
+
+//protoc -I idl/pb idl/pb/*.proto --go_out=:. --go-grpc_out=require_unimplemented_servers=false:.
+//protoc-go-inject-tag -input="idl/pb/task/*.pb.go"
+//protoc-go-inject-tag -input="idl/pb/user/*.pb.go"
+
+message TaskModel {
+  // @inject_tag: json:"task_id" form:"task_id"
+  int64 TaskID = 1;
+  // @inject_tag: json:"user_id" form:"user_id"
+  int64 UserID = 2;
+  // @inject_tag: json:"status" form:"status"
+  int64 Status = 3;
+  // @inject_tag: json:"title" form:"title"
+  string Title = 4;
+  // @inject_tag: json:"content" form:"content"
+  string Content = 5;
+  // @inject_tag: json:"start_time" form:"start_time"
+  int64 StartTime = 6;
+  // @inject_tag: json:"end_time" form:"end_time"
+  int64 EndTime = 7;
+}
+
+message TaskRequest{
+  // @inject_tag: json:"task_id" form:"task_id"
+  int64 TaskID = 1;
+  // @inject_tag: json:"user_id" form:"user_id"
+  int64 UserID = 2;
+  // @inject_tag: json:"status" form:"status"
+  int64 Status = 3;
+  // @inject_tag: json:"title" form:"title"
+  string Title = 4;
+  // @inject_tag: json:"content" form:"content"
+  string Content = 5;
+  // @inject_tag: json:"start_time" form:"start_time"
+  int64 StartTime = 6;
+  // @inject_tag: json:"end_time" form:"end_time"
+  int64 EndTime = 7;
+  // @inject_tag: json:"info" form:"info"
+  string Info = 8;
+  // @inject_tag: json:"page_num" form:"page_num"
+  int64 PageNum = 9;
+  // @inject_tag: json:"page_size" form:"page_size"
+  int64 PageSize = 10;
+}
+
+message TasksDetailResponse{
+  // @inject_tag: json:"task_model" form:"task_model"
+  repeated TaskModel TaskDetail = 1;
+  // @inject_tag: json:"code" form:"code"
+  int64 Code = 2;
+}
+
+message TaskCommonResponse{
+  // @inject_tag: json:"code" form:"code"
+  int64 Code = 1;
+  // @inject_tag: json:"msg" form:"msg"
+  string Msg = 2;
+  // @inject_tag: json:"data" form:"data"
+  string Data = 3;
+}
+
+service TaskService{
+  rpc TaskCreate(TaskRequest) returns(TaskCommonResponse);
+  rpc TaskUpdate(TaskRequest) returns(TaskCommonResponse);
+  rpc TaskShow(TaskRequest) returns(TasksDetailResponse);
+  rpc TaskDelete(TaskRequest) returns(TaskCommonResponse);
+  rpc TaskSearch(TaskRequest) returns(TasksDetailResponse);
+  rpc TaskDeleteAll(TaskRequest) returns(TaskCommonResponse);
+  rpc TaskUpdateAll(TaskRequest) returns(TaskCommonResponse);
+}
